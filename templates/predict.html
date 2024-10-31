@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Predict - Employee Attrition Prediction{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-user-check me-2"></i>
+                    Employee Information
+                </h3>
+            </div>
+            <div class="card-body">
+                <form id="prediction-form">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Monthly Income</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                <input type="number" class="form-control" name="monthly_income" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Overtime</label>
+                            <select class="form-select" name="overtime">
+                                {% for option in overtime_options %}
+                                    <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" name="age" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Total Working Years</label>
+                            <input type="number" class="form-control" name="total_working_years" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Years at Company</label>
+                            <input type="number" class="form-control" name="years_at_company" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Stock Option Level</label>
+                            <input type="number" class="form-control" name="stock_option_level" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Job Level</label>
+                            <input type="number" class="form-control" name="job_level" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Job Role</label>
+                            <select class="form-select" name="job_role">
+                                {% for role in job_role_options %}
+                                    <option value="{{ role }}">{{ role }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Distance from Home</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="distance_from_home" required>
+                                <span class="input-group-text">km</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Work-Life Balance (1-4)</label>
+                            <input type="number" class="form-control" name="work_life_balance" min="1" max="4" required>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calculator me-2"></i>
+                            Predict Attrition
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Result Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Prediction Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="result-icon" class="mb-3"></div>
+                <h4 id="prediction-text"></h4>
+                <p class="lead" id="probability-text"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Employee Attrition Prediction{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card shadow-lg">
+            <div class="card-body text-center">
+                <h1 class="display-4 mb-4">
+                    <i class="fas fa-users text-primary me-3"></i>
+                    Employee Attrition Prediction System
+                </h1>
+                <p class="lead mb-4">
+                    Predict employee attrition using advanced machine learning algorithms. 
+                    Our system analyzes various factors to help you identify potential retention risks.
+                </p>
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="feature-box">
+                            <i class="fas fa-chart-pie fa-3x text-primary mb-3"></i>
+                            <h3>Data-Driven</h3>
+                            <p>Uses machine learning models trained on extensive HR data</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box">
+                            <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
+                            <h3>Real-Time</h3>
+                            <p>Get instant predictions based on employee parameters</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box">
+                            <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                            <h3>Accurate</h3>
+                            <p>High accuracy predictions using multiple features</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <a href="/predict-form" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calculator me-2"></i>
+                        Start Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
